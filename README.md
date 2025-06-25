@@ -40,6 +40,7 @@ Or after adding to your PATH, simply:
 ```bash
 FileTree
 ```
+
 ---
 
 ## Usage
@@ -53,8 +54,16 @@ FileTree [path] [options]
 - `path` (optional): Directory path to list. If omitted, the script will prompt for input.
 
 ### Options
+
 - `-h`, `--help`  
   Shows help menu explaining all available commands.
+  Show help menu explaining all available commands.
+
+- `--config`  
+  Modify the `config.ini` instead of displaying the tree. Use flags to save settings.
+
+- `--show-config`  
+  Show current config and exit.
 
 - `-i`, `--include`  
   Comma-separated list of file extensions to include (e.g., `py,txt,md`).  
@@ -96,28 +105,28 @@ FileTree /path/to/dir -ep temp,.cache
 
 ## Color Legend
 
-| File Type           | Color Example         |
-|---------------------|-----------------------|
-| Python              | Blue                  |
-| C/C++               | Cyan                  |
-| Java                | Red                   |
-| JavaScript          | Yellow                |
-| Go                  | Green                 |
-| Rust                | Orange                |
-| Ruby                | Magenta               |
-| PHP                 | Pink                  |
-| HTML                | Orange-Red            |
-| CSS                 | Blue (dark)           |
-| Text/Markdown/Log   | White / Magenta       |
-| JSON/YAML           | Orange                |
-| XML/Config          | Gray                  |
-| CSV                 | Light Green           |
-| Executables/Binaries| Red                   |
-| Archives            | Brownish              |
-| Images              | Purple                |
-| Audio               | Light Purple          |
-| Video               | Dark Purple           |
-| Directories         | White                 |
+| File Type            | Color Example         |
+|----------------------|-----------------------|
+| Python               | Blue                  |
+| C/C++                | Cyan                  |
+| Java                 | Red                   |
+| JavaScript           | Yellow                |
+| Go                   | Green                 |
+| Rust                 | Orange                |
+| Ruby                 | Magenta               |
+| PHP                  | Pink                  |
+| HTML                 | Orange-Red            |
+| CSS                  | Dark Blue             |
+| Text/Markdown/Log    | White / Magenta       |
+| JSON/YAML            | Orange                |
+| XML/Config           | Gray                  |
+| CSV                  | Light Green           |
+| Executables/Binaries | Red                   |
+| Archives             | Brownish              |
+| Images               | Purple                |
+| Audio                | Light Purple          |
+| Video                | Dark Purple           |
+| Directories          | White                 |
 
 ---
 
@@ -126,5 +135,31 @@ FileTree /path/to/dir -ep temp,.cache
 - The script uses ANSI escape codes for coloring, so it works best in terminals that support ANSI colors.
 - Executable detection is based on file extensions and executable permission bits.
 - Permission errors when accessing directories are caught and displayed as `[Permission Denied]`.
+
+---
+
+## Config Edition
+
+Example of `config.ini`:
+
+```ini
+[GENERAL]
+path = .
+
+[FILTERS]
+include_extensions = py,txt,md
+exclude_names = __pycache__
+exclude_prefixes = _,.
+
+[DISPLAY]
+max_depth = 3
+```
+
+### How to edit
+
+There are two ways to edit the config:
+
+- Directly edit the `config.ini` file (example above).
+- Use command-line flags with the `--config` option to save settings. Remember is you want do edit `config.ini` by flags provide all constrains you want to have `confing.ini` is being recreated without taking in consideration curent `config.ini` 
 
 ---
